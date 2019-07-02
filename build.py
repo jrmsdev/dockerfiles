@@ -2,8 +2,7 @@
 
 import sys
 from glob import glob
-from os import path
-from subprocess import check_output
+from os import path, system
 
 files = glob('**/Dockerfile', recursive = True)
 
@@ -19,9 +18,12 @@ def main():
 def build(src, tag):
 	print('--  ', src)
 	print('--    ', tag)
-	cmd = ['docker', 'build', '--rm', '-t', tag, src]
-	print('--  ', ' '.join(cmd))
-	check_output(['docker', 'build', '--rm', '-t', tag, src])
+	cmd = f"docker build --rm -t {tag} {src}"
+	print('--  ', cmd)
+	rc = system(cmd)
+	if rc != 0:
+		print('-- FAIL:', cmd)
+		sys.exit(1)
 
 if __name__ == '__main__':
 	sys.exit(main())

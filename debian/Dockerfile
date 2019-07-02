@@ -11,7 +11,7 @@ RUN apt-get clean
 RUN apt-get update
 RUN apt-get dist-upgrade -yy --purge
 
-RUN apt-get install -yy --no-install-recommends bash less vim-tiny
+RUN apt-get install -yy --no-install-recommends bash
 
 RUN apt-get clean
 RUN apt-get autoremove -yy --purge
