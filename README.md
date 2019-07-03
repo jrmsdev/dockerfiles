@@ -24,7 +24,7 @@ Install packages: python3 and python3-distutils and some deps.
 
 Install/Update pip packages: pip, setuptools and wheel.
 
-* [golang](https://github.com/jrmsdev/dockerfiles/blob/master/python3/Dockerfile)
+* [python3](https://github.com/jrmsdev/dockerfiles/blob/master/python3/Dockerfile)
 	* FROM jrmsdev/debian
-* [golang:testing](https://github.com/jrmsdev/dockerfiles/blob/master/python3/testing/Dockerfile)
+* [python3:testing](https://github.com/jrmsdev/dockerfiles/blob/master/python3/testing/Dockerfile)
 	* FROM jrmsdev/debian:testing
