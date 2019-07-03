@@ -4,13 +4,17 @@ import sys
 from glob import glob
 from os import path, system
 
-files = glob('**/Dockerfile', recursive = True)
+files = sys.argv[1:]
+if len(files) < 1:
+	files = glob('**/Dockerfile', recursive = True)
 
 def main():
 	rc = 0
 	for fn in sorted(files):
 		print('--', fn)
-		src = path.dirname(fn)
+		src = path.normpath(fn)
+		if path.basename(src) == 'Dockerfile':
+			src = path.dirname(fn)
 		tag = '/'.join(['jrmsdev', src.replace(path.sep, ':')])
 		build(src, tag)
 	return rc
