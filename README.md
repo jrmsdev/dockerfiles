@@ -20,7 +20,9 @@ Install golang package.
 
 # Python3
 
-Install packages: python3 and python3-pip
+Install packages: python3 and python3-distutils and some deps.
+
+Install/Update pip packages: pip, setuptools and wheel.
 
 * [golang](https://github.com/jrmsdev/dockerfiles/blob/master/python3/Dockerfile)
 	* FROM jrmsdev/debian
