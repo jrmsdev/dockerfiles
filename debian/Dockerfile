@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 LABEL maintainer="Jeremías Casteglione <jrmsdev@gmail.com>"
-LABEL version="19.9.17"
+LABEL version="19.9.17-1"
 
 USER root:root
 
