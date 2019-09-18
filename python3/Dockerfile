@@ -1,30 +1,24 @@
 FROM jrmsdev/debian
 
 LABEL maintainer="Jeremías Casteglione <jrmsdev@gmail.com>"
-LABEL version="19.7.3"
+LABEL version="19.9.17"
 
-RUN apt-get clean
-RUN apt-get update
-RUN apt-get dist-upgrade -yy --purge
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get install -yy --no-install-recommends python3 python3-pip openssl \
-	ca-certificates
+ENV APT_INSTALL python3 python3-pip openssl ca-certificates python3-distutils
 
-RUN pip3 --version
-RUN pip3 install -U pip
+RUN apt-get clean && \
+	apt-get update -yy && \
+	apt-get install -yy --no-install-recommends ${APT_INSTALL} && \
+	apt-get clean && \
+	apt-get autoremove -yy --purge && \
+	rm -rf /var/lib/apt/lists/* \
+		/var/cache/apt/archives/*.deb \
+		/var/cache/apt/*cache.bin
 
-RUN apt-get autoremove -yy --purge python3-pip
-
-RUN apt-get clean
-RUN apt-get autoremove -yy --purge
-
-RUN rm -rf /var/lib/apt/lists/*
-RUN rm -f /var/cache/apt/archives/*.deb
-RUN rm -f /var/cache/apt/*cache.bin
-
-RUN rm -rf /root/.cache/pip
-
-RUN python3 --version
-RUN pip --version
+RUN pip3 install -U pip && \
+	pip install -U setuptools && \
+	pip install -U wheel && \
+	python3 --version && pip --version
 
 CMD /bin/bash -i -l
