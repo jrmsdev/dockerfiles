@@ -1,7 +1,7 @@
 FROM debian:testing-slim
 
 LABEL maintainer="Jeremías Casteglione <jrmsdev@gmail.com>"
-LABEL version="19.7.2"
+LABEL version="19.9.17"
 
 USER root:root
 
