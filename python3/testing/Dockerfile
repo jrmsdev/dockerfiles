@@ -1,11 +1,11 @@
 FROM jrmsdev/debian:testing
 
 LABEL maintainer="Jeremías Casteglione <jrmsdev@gmail.com>"
-LABEL version="19.9.17"
+LABEL version="240821"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV APT_INSTALL python3 python3-pip openssl ca-certificates python3-distutils
+ENV APT_INSTALL python3 openssl ca-certificates
 
 RUN apt-get clean && \
 	apt-get update -yy && \
@@ -16,9 +16,6 @@ RUN apt-get clean && \
 		/var/cache/apt/archives/*.deb \
 		/var/cache/apt/*cache.bin
 
-RUN pip3 install -U pip && \
-	pip install -U setuptools && \
-	pip install -U wheel && \
-	python3 --version && pip --version
+RUN python3 --version
 
 CMD /bin/bash -i -l

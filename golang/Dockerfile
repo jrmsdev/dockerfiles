@@ -1,7 +1,7 @@
 FROM jrmsdev/debian
 
 LABEL maintainer="Jeremías Casteglione <jrmsdev@gmail.com>"
-LABEL version="19.9.17"
+LABEL version="240821"
 
 ENV DEBIAN_FRONTEND noninteractive
 
